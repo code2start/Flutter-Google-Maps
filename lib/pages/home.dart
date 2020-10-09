@@ -23,6 +23,13 @@ class _HomeState extends State<Home> {
             Container(
               child: Image.asset('assets/images/c2s.png'),
               alignment: Alignment.topCenter,
+            ),
+            Container(
+              child: Text(
+                'Share code2start',
+                style: TextStyle(fontSize: 50),
+              ),
+              alignment: Alignment.bottomCenter,
             )
           ],
         ));
