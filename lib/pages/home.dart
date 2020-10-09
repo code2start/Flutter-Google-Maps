@@ -26,9 +26,14 @@ class _HomeState extends State<Home> {
                 setState(() {
                   myMarkers.add(
                     Marker(
-                      markerId: MarkerId('1'),
-                      position: LatLng(30.0444, 31.2357),
-                    ),
+                        markerId: MarkerId('1'),
+                        position: LatLng(30.0444, 31.2357),
+                        infoWindow: InfoWindow(
+                            title: 'Code2Start',
+                            snippet: 'Please share code2Start on social'),
+                        onTap: () {
+                          print('Marker tabed');
+                        }),
                   );
                 });
               },
