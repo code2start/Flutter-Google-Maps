@@ -23,6 +23,26 @@ class _HomeState extends State<Home> {
     getCustomMarker();
   }
 
+  Set<Polygon> myPolygon() {
+    var polygonCoords = List<LatLng>();
+    polygonCoords.add(LatLng(37.43296265331129, -122.08832357078792));
+    polygonCoords.add(LatLng(37.43006265331129, -122.08832357078792));
+    polygonCoords.add(LatLng(37.43006265331129, -122.08332357078792));
+    polygonCoords.add(LatLng(37.43296265331129, -122.08832357078792));
+
+    var polygonSet = Set<Polygon>();
+    polygonSet.add(
+      Polygon(
+        polygonId: PolygonId('1'),
+        points: polygonCoords,
+        strokeWidth: 1,
+        strokeColor: Colors.red,
+      ),
+    );
+
+    return polygonSet;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,8 +52,9 @@ class _HomeState extends State<Home> {
         body: Stack(
           children: [
             GoogleMap(
-              initialCameraPosition:
-                  CameraPosition(target: LatLng(30.0444, 31.2357), zoom: 14),
+              initialCameraPosition: CameraPosition(
+                  target: LatLng(37.43296265331129, -122.08832357078792),
+                  zoom: 14),
               onMapCreated: (GoogleMapController googleMapController) {
                 setState(() {
                   myMarkers.add(
@@ -52,6 +73,7 @@ class _HomeState extends State<Home> {
                 });
               },
               markers: myMarkers,
+              polygons: myPolygon(),
             ),
             Container(
               child: Image.asset('assets/images/c2s.png'),
