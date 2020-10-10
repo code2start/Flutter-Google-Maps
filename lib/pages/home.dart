@@ -10,6 +10,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var myMarkers = HashSet<Marker>(); //collection
+  BitmapDescriptor customMarker; //attribute
+
+  getCustomMarker() async {
+    customMarker = await BitmapDescriptor.fromAssetImage(
+        ImageConfiguration.empty, 'assets/images/cc2s.png');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getCustomMarker();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +38,16 @@ class _HomeState extends State<Home> {
                 setState(() {
                   myMarkers.add(
                     Marker(
-                        markerId: MarkerId('1'),
-                        position: LatLng(30.0444, 31.2357),
-                        infoWindow: InfoWindow(
-                            title: 'Code2Start',
-                            snippet: 'Please share code2Start on social'),
-                        onTap: () {
-                          print('Marker tabed');
-                        }),
+                      markerId: MarkerId('1'),
+                      position: LatLng(30.0444, 31.2357),
+                      infoWindow: InfoWindow(
+                          title: 'Code2Start',
+                          snippet: 'Please share code2Start on social'),
+                      onTap: () {
+                        print('Marker tabed');
+                      },
+                      icon: customMarker,
+                    ),
                   );
                 });
               },
