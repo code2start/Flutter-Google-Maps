@@ -52,15 +52,15 @@ class _HomeState extends State<Home> {
         body: Stack(
           children: [
             GoogleMap(
+              mapType: MapType.normal,
               initialCameraPosition: CameraPosition(
-                  target: LatLng(37.43296265331129, -122.08832357078792),
-                  zoom: 14),
+                  target: LatLng(29.990940, 31.149248), zoom: 14),
               onMapCreated: (GoogleMapController googleMapController) {
                 setState(() {
                   myMarkers.add(
                     Marker(
                       markerId: MarkerId('1'),
-                      position: LatLng(30.0444, 31.2357),
+                      position: LatLng(29.990940, 31.149248),
                       infoWindow: InfoWindow(
                           title: 'Code2Start',
                           snippet: 'Please share code2Start on social'),
