@@ -43,6 +43,15 @@ class _HomeState extends State<Home> {
     return polygonSet;
   }
 
+  Set<Circle> myCircles = Set.from([
+    Circle(
+      circleId: CircleId('1'),
+      center: LatLng(29.990940, 31.149248),
+      radius: 1000,
+      strokeWidth: 1,
+    )
+  ]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,8 +81,11 @@ class _HomeState extends State<Home> {
                   );
                 });
               },
+              /*
               markers: myMarkers,
               polygons: myPolygon(),
+              */
+              circles: myCircles,
             ),
             Container(
               child: Image.asset('assets/images/c2s.png'),
