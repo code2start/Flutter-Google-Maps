@@ -11,6 +11,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   var myMarkers = HashSet<Marker>(); //collection
   BitmapDescriptor customMarker; //attribute
+  List<Polyline> myPolyline = [];
 
   getCustomMarker() async {
     customMarker = await BitmapDescriptor.fromAssetImage(
@@ -21,6 +22,24 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     getCustomMarker();
+    createPloyLine();
+  }
+
+  createPloyLine() {
+    myPolyline.add(
+      Polyline(
+          polylineId: PolylineId('1'),
+          color: Colors.blue,
+          width: 3,
+          points: [
+            LatLng(29.990000, 31.149000),
+            LatLng(29.999000, 31.149900),
+          ],
+          patterns: [
+            PatternItem.dash(20),
+            PatternItem.gap(10),
+          ]),
+    );
   }
 
   Set<Polygon> myPolygon() {
@@ -81,11 +100,14 @@ class _HomeState extends State<Home> {
                   );
                 });
               },
+
               /*
               markers: myMarkers,
               polygons: myPolygon(),
-              */
+              
               circles: myCircles,
+              */
+              polylines: myPolyline.toSet(),
             ),
             Container(
               child: Image.asset('assets/images/c2s.png'),
